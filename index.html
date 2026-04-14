@@ -2124,25 +2124,27 @@
   <script>
     // ── Countdown Timer ──────────────────────────────
     function startCountdown() {
-  const key = 'velas_timer_end';
-  let end = localStorage.getItem(key);
-  if (!end || Date.now() > Number(end)) {
-    // Siempre 24 horas desde ahora, se resetea solo
-    end = Date.now() + (24 * 3600 * 1000);
-    localStorage.setItem(key, end);
+  function update() {
+    const ahora = new Date();
+    
+    // Creamos la fecha de "finalización" para hoy a las 23:59:59
+    const finDeHoy = new Date();
+    finDeHoy.setHours(23, 59, 59, 999);
+    
+    const diff = finDeHoy.getTime() - ahora.getTime();
+    
+    const h = String(Math.floor(diff / 3600000)).padStart(2,'0');
+    const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+    const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+    
+    const el = document.getElementById('countdown');
+    if (el) el.textContent = h + ':' + m + ':' + s;
+    
+    setTimeout(update, 1000);
   }
+  update();
+}
 
-      function update() {
-        const diff = Math.max(0, Number(end) - Date.now());
-        const h = String(Math.floor(diff / 3600000)).padStart(2,'0');
-        const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
-        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
-        const el = document.getElementById('countdown');
-        if (el) el.textContent = h + ':' + m + ':' + s;
-        if (diff > 0) setTimeout(update, 1000);
-      }
-      update();
-    }
 
     // ── Intersection Observer for fade-in ────────────
     function initFadeIn() {
