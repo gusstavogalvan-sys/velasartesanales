@@ -50,6 +50,31 @@
       --radius-lg: 24px;
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
     }
+        /* ═══════════════════════════════════════
+       LIGHTBOX TESTIMONIOS
+    ═══════════════════════════════════════ */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    .lightbox.active img { transform: scale(1); }
+    .wa-grid img { cursor: zoom-in; }
     
     /* ═══════════════════════════════════════
        PROFITABILITY SECTION
@@ -1998,18 +2023,21 @@
       </div><!-- end testi-grid -->
 
       <!-- ── Screenshots reales de WhatsApp ── -->
-      <div class="wa-section">
+             <div class="wa-section">
         <div class="wa-label">Y no es solo lo que dicen… mirá lo que está pasando en el grupo privado 👇</div>
+        <p style="font-size: 14px; color: var(--brown-mid); margin-bottom: 20px; text-align: center;">
+          Al unirte hoy, también tendrás acceso a nuestra comunidad exclusiva de WhatsApp donde compartimos resultados, resolvemos dudas en tiempo real y nos motivamos cada día.
+        </p>
         <div class="wa-grid">
           <!-- Subí los archivos del Drive a /img en tu repo GitHub
                Renombralos sin espacios: testimonio-1.jpg ... testimonio-6.jpg
                Si la imagen no existe se oculta automáticamente con onerror -->
-          <img src="img-testimonio-1.jpg" alt="Alumna 1 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img-testimonio-2.jpg" alt="Alumna 2 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img-testimonio-3.jpg" alt="Alumna 3 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img-testimonio-4.jpg" alt="Alumna 4 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img-testimonio-5.jpg" alt="Alumna 5 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img-testimonio-6.jpg" alt="Alumna 6 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+         <img src="img-testimonio-1.jpg" onclick="openLightbox(this.src)" alt="Alumna 1 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+<img src="img-testimonio-2.jpg" onclick="openLightbox(this.src)" alt="Alumna 2 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+<img src="img-testimonio-3.jpg" onclick="openLightbox(this.src)" alt="Alumna 3 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+<img src="img-testimonio-4.jpg" onclick="openLightbox(this.src)" alt="Alumna 4 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+<img src="img-testimonio-5.jpg" onclick="openLightbox(this.src)" alt="Alumna 5 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+<img src="img-testimonio-6.jpg" onclick="openLightbox(this.src)" alt="Alumna 6 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
         </div>
       </div>
 
@@ -2200,7 +2228,17 @@
         body.style.maxHeight = body.scrollHeight + 'px';
       }
     }
+   function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  lb.classList.add('active');
+}
 
+document.addEventListener('keydown', (e) => {
+  if (e.key === "Escape") document.getElementById('lightbox').classList.remove('active');
+});
+    
     // ── Init ─────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', () => {
       startCountdown();
@@ -2208,6 +2246,9 @@
       initFloatingCTA();
     });
   </script>
-
+  <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+    <img id="lightbox-img" src="" alt="Testimonio expandido">
+  </div>
+  
 </body>
 </html>
