@@ -1411,12 +1411,12 @@
           <!-- Subí los archivos del Drive a /img en tu repo GitHub
                Renombralos sin espacios: testimonio-1.jpg ... testimonio-6.jpg
                Si la imagen no existe se oculta automáticamente con onerror -->
-          <img src="img/testimonio-1.jpg" alt="Alumna 1 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img/testimonio-2.jpg" alt="Alumna 2 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img/testimonio-3.jpg" alt="Alumna 3 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img/testimonio-4.jpg" alt="Alumna 4 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img/testimonio-5.jpg" alt="Alumna 5 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-          <img src="img/testimonio-6.jpg" alt="Alumna 6 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+          <img src="img-testimonio-1.jpg" alt="Alumna 1 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+          <img src="img-testimonio-2.jpg" alt="Alumna 2 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+          <img src="img-testimonio-3.jpg" alt="Alumna 3 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+          <img src="img-testimonio-4.jpg" alt="Alumna 4 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+          <img src="img-testimonio-5.jpg" alt="Alumna 5 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+          <img src="img-testimonio-6.jpg" alt="Alumna 6 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
         </div>
       </div>
 
@@ -1533,12 +1533,13 @@
   <script>
     // ── Countdown Timer ──────────────────────────────
     function startCountdown() {
-      const key = 'velas_timer_end';
-      let end = localStorage.getItem(key);
-      if (!end || Date.now() > Number(end)) {
-        end = Date.now() + (23 * 3600 + 47 * 60 + 13) * 1000;
-        localStorage.setItem(key, end);
-      }
+  const key = 'velas_timer_end';
+  let end = localStorage.getItem(key);
+  if (!end || Date.now() > Number(end)) {
+    // Siempre 24 horas desde ahora, se resetea solo
+    end = Date.now() + (24 * 3600 * 1000);
+    localStorage.setItem(key, end);
+  }
 
       function update() {
         const diff = Math.max(0, Number(end) - Date.now());
