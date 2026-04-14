@@ -1006,6 +1006,128 @@
     @media (min-width: 481px) {
       .floating-cta { display: none !important; }
     }
+
+    /* ═══════════════════════════════════════
+       ACCORDION MÓDULOS
+    ═══════════════════════════════════════ */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .accordion-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .accordion-item.open {
+      border-color: rgba(201,151,58,0.55);
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      gap: 12px;
+      transition: background var(--transition);
+    }
+
+    .accordion-item.open .accordion-header {
+      background: rgba(201,151,58,0.08);
+    }
+
+    .accordion-header:hover {
+      background: rgba(255,255,255,0.07);
+    }
+
+    .accordion-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .accordion-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .accordion-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+
+    .accordion-arrow {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .accordion-item.open .accordion-arrow {
+      transform: rotate(180deg);
+      background: rgba(201,151,58,0.2);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .accordion-body-inner {
+      padding: 4px 20px 18px 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .accordion-lessons {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .accordion-lessons li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(250,247,242,0.72);
+      line-height: 1.45;
+    }
+
+    .accordion-lessons li::before {
+      content: '▸';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 11px;
+    }
   </style>
 </head>
 <body>
@@ -1165,38 +1287,401 @@
         Andrea, emprendedora colombiana con más de 3 años creando y vendiendo velas artesanales.
       </p>
 
-      <div class="modules-grid">
-        <div class="module-card">
-          <div class="module-num">Módulo 2–5</div>
-          <div class="module-name">Fundamentos técnicos</div>
-          <div class="module-desc">Tipos de ceras, fragancias, colorantes, temperaturas y materiales exactos</div>
+      <div class="accordion" id="modulesAccordion">
+
+        <!-- MÓDULO 1 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 1</span>
+              <span class="accordion-title">Bienvenida</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Grupo de soporte para alumnos por WhatsApp</li>
+                <li>Lista de materiales</li>
+                <li>Lista de proveedores de moldes e insumos</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="module-card">
-          <div class="module-num">Módulo 6–7</div>
-          <div class="module-name">Práctica paso a paso</div>
-          <div class="module-desc">+30 tipos de velas distintas: suculentas, capucchinos, terrarios, en gel y más</div>
+
+        <!-- MÓDULO 2 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 2</span>
+              <span class="accordion-title">Recomendaciones</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Recomendaciones al hacer velas artesanales</li>
+                <li>Evita cambios bruscos de temperaturas</li>
+                <li>No dar luz directa a tus velas</li>
+                <li>Vertido y corrientes de aire</li>
+                <li>Tiempo de curado de tus velas</li>
+                <li>Manchas blancas en las velas</li>
+                <li>Por qué suben mis velas</li>
+                <li>Por qué me queda agua en el fondo de mi recipiente</li>
+                <li>Por qué se parten mis velas</li>
+                <li>Cómo dejar mis velas lisas</li>
+                <li>Rechupe en mis velas</li>
+                <li>Por qué tengo puntos en mis velas de moldes</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="module-card">
-          <div class="module-num">Módulo 8-9</div>
-          <div class="module-name">Bono Navidad & Halloween</div>
-          <div class="module-desc">Velas especiales de temporada para aprovechar las fechas con mayor demanda</div>
+
+        <!-- MÓDULO 3 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 3</span>
+              <span class="accordion-title">Teoría</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Breve descripción de las ceras</li>
+                <li>Ceras vegetales</li>
+                <li>Ceras animales</li>
+                <li>Ceras minerales</li>
+                <li>Puntos de fusión</li>
+                <li>Cera de alto punto de fusión</li>
+                <li>Cera de bajo punto de fusión</li>
+                <li>Numeración de las ceras</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="module-card">
-          <div class="module-num">Módulo 10</div>
-          <div class="module-name">Errores comunes</div>
-          <div class="module-desc">Todos los problemas técnicos resueltos antes de que los cometas</div>
+
+        <!-- MÓDULO 4 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 4</span>
+              <span class="accordion-title">Pabilos</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Breve descripción de los pabilos</li>
+                <li>Pabilos de algodón</li>
+                <li>Cómo encerar un pabilo de algodón</li>
+                <li>Cómo encerar una mecha de algodón</li>
+                <li>Cómo armar una mecha de algodón</li>
+                <li>Pabilos de madera</li>
+                <li>Cómo encerar un pabilo de madera</li>
+                <li>Cómo armar un pabilo de madera</li>
+                <li>Diámetros de quemado de los pabilos</li>
+                <li>Cómo poner tus mechas con pegatinas</li>
+                <li>Sujetadores de pabilo</li>
+                <li>Pruebas de quemado</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="module-card">
-          <div class="module-num">Módulo 13</div>
-          <div class="module-name">Emprendimiento real</div>
-          <div class="module-desc">Costos, precios, redes sociales, Facebook, TikTok y WhatsApp Business</div>
+
+        <!-- MÓDULO 5 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 5</span>
+              <span class="accordion-title">Otros Materiales</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Breve descripción de más materiales</li>
+                <li>Colorantes en polvo</li>
+                <li>Colorantes en micas</li>
+                <li>Colorantes en pastillas</li>
+                <li>Colorantes líquidos</li>
+                <li>Fragancias o esencias</li>
+                <li>Aceites esenciales</li>
+                <li>Tipos de recipientes</li>
+                <li>Tipos de moldes</li>
+                <li>Aditivos y endurecedores</li>
+                <li>Desmoldantes</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="module-card">
-          <div class="module-num">Módulo 15</div>
-          <div class="module-name">Actualizaciones nuevas</div>
-          <div class="module-desc">Velas con mensaje oculto, de flor gigante, en porcelana y más técnicas 2024</div>
+
+        <!-- MÓDULO 6 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 6</span>
+              <span class="accordion-title">Elementos de Seguridad</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Utensilios indispensables</li>
+                <li>Medidas de seguridad preventivas</li>
+                <li>Cómo calentar tus moldes o recipientes</li>
+                <li>Cómo limpiar tus utensilios y moldes</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+
+        <!-- MÓDULO 7 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 7</span>
+              <span class="accordion-title">Práctica con Ceras de Bajo Punto de Fusión</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Mentalidad de emprendedor</li>
+                <li>Vela con cera de soja tradicional</li>
+                <li>Vela con cera de soja y endurecedor</li>
+                <li>Efecto de galleta con cera</li>
+                <li>Efecto de crema chantillí</li>
+                <li>Efecto de 2 colores en velas</li>
+                <li>Wax melts</li>
+                <li>Vela horneable</li>
+                <li>Vela en capas</li>
+                <li>Vela marmoleada</li>
+                <li>Vela aromática con cera de coco</li>
+                <li>Vela tipo yogurt con cera de soja y vaso</li>
+                <li>Vela de masaje con cera de palma corporal</li>
+                <li>Vela tipo cup cake</li>
+                <li>Velas con cera en vaso en recipientes metálicos</li>
+                <li>Vela con cera de vaso y soja de alto punto tipo flor</li>
+                <li>Vela tipo malteada con soja y coco</li>
+                <li>Vela tipo terrarios o suculentas con cera de palma</li>
+                <li>Vela tipo recordatorios</li>
+                <li>Vela con sprinkles</li>
+                <li>Vela en recipiente de yeso</li>
+                <li>Vela tipo capuchino</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 8 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 8</span>
+              <span class="accordion-title">Práctica con Ceras de Alto Punto de Fusión</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Vela con cera de soja en moldes</li>
+                <li>Vela con cera de soja y aditivo</li>
+                <li>Velas con cera de palma apf</li>
+                <li>Velas con cera de abeja</li>
+                <li>Vela en gel fondo del mar</li>
+                <li>Vela en gel sin burbujas</li>
+                <li>Vela en gel tipo coctel</li>
+                <li>Vela en gel y palma tipo postre</li>
+                <li>Velón de parafina</li>
+                <li>Velón con cera de vaso y parafina</li>
+                <li>Velón desde cero y decoración con papel servilleta</li>
+                <li>Otra manera de pegar el papel servilleta</li>
+                <li>Cómo pegar el papel oro en velas</li>
+                <li>Velas con figuras de alto punto de fusión</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 9 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 9</span>
+              <span class="accordion-title">Bono Gratis — Velas Navideñas</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Hombre de nieve</li>
+                <li>Papa Noel</li>
+                <li>Vela de venado</li>
+                <li>Vela copos de nieve</li>
+                <li>Vela en recipiente metálico</li>
+                <li>Vela en recipiente</li>
+                <li>Árbol de navidad</li>
+                <li>Vela en molde de 2 colores</li>
+                <li>Velas infinitas y flotantes</li>
+                <li>Velas en molde de Halloween</li>
+                <li>Vela en recipiente efecto sangre</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 10 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 10</span>
+              <span class="accordion-title">Bono Gratis — Resina</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Contenido del módulo de resina incluido como bono</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 11 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 11</span>
+              <span class="accordion-title">Bono Gratis — Jabones con Glicerina</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Aditivos y lista de materiales</li>
+                <li>Cómo derretir la glicerina</li>
+                <li>Aromas para nuestros jabones</li>
+                <li>Colorantes para nuestros jabones</li>
+                <li>Exfoliantes para nuestros jabones</li>
+                <li>Tiempo de curado de nuestros jabones</li>
+                <li>Envuelve tus jabones</li>
+                <li>Jabón de aloe vera</li>
+                <li>Jabón con lufa</li>
+                <li>Jabón de avena y miel</li>
+                <li>Jabón exfoliante de café</li>
+                <li>Resultado final</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 12 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 12</span>
+              <span class="accordion-title">Emprendimiento</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Cómo sacar costos de tus velas</li>
+                <li>Cómo hacer un logo</li>
+                <li>Empaca y decora tus velas</li>
+                <li>Crea tu página en Facebook</li>
+                <li>Crea tu página en TikTok</li>
+                <li>Cómo crear una cuenta de empresa con WhatsApp Business</li>
+                <li>Cómo crear un video desde cero para tus páginas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 13 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 13</span>
+              <span class="accordion-title">Bono Gratis — Portavelas</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Bienvenida al módulo</li>
+                <li>Recomendaciones antes de empezar</li>
+                <li>Cómo dar color a nuestra mezcla</li>
+                <li>Lista de materiales</li>
+                <li>Porta velas en yeso</li>
+                <li>Porta velas en cemento</li>
+                <li>Porta velas de yeso y cemento</li>
+                <li>Porta velas de cemento y marmolina</li>
+                <li>Porta velas de resina</li>
+                <li>Resultado final</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 14 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 14</span>
+              <span class="accordion-title">Actualizaciones — Nuevo</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Ramo de flores con palillos y flores secas</li>
+                <li>Vela tipo postre con galleta y crema</li>
+                <li>Vela de flor gigante con cera de palma y parafina</li>
+                <li>Vela con base de cemento</li>
+                <li>Vela tipo torta</li>
+                <li>Cómo poner nombres de vinilo adhesivo y etiquetas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 15 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header-left">
+              <span class="accordion-num">Módulo 15</span>
+              <span class="accordion-title">Moldes de Silicona</span>
+            </div>
+            <span class="accordion-arrow">▾</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul class="accordion-lessons">
+                <li>Replica tu figura</li>
+                <li>Tu primer molde de silicona</li>
+                <li>Molde con color</li>
+                <li>Molde con recipiente desechable</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end accordion -->
     </div>
   </section>
 
@@ -1585,6 +2070,25 @@
       }, { threshold: 0.2 });
 
       obs.observe(hero);
+    }
+
+    // ── Accordion Módulos ────────────────────────────
+    function toggleAccordion(header) {
+      const item = header.closest('.accordion-item');
+      const body = item.querySelector('.accordion-body');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.accordion-body').style.maxHeight = null;
+      });
+
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
     }
 
     // ── Init ─────────────────────────────────────────
