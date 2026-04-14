@@ -1132,7 +1132,74 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
+  <!--
+    /* ═══════════════════════════════════════
+       PROFITABILITY SECTION
+    ═══════════════════════════════════════ */
+    .profit-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 4px 32px var(--shadow);
+      margin-top: 32px;
+      border: 1px solid var(--cream-dark);
+    }
+
+    .profit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+      margin: 24px 0;
+    }
+
+    .profit-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brown-mid);
+      margin-bottom: 8px;
+    }
+
+    .profit-item-value {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    .profit-highlight {
+      color: var(--terracotta) !important;
+    }
+
+    .profit-divider {
+      height: 1px;
+      background: var(--cream-dark);
+      margin: 20px 0;
+    }
+
+    .profit-footer {
+      background: var(--cream);
+      padding: 16px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .profit-footer p {
+      font-size: 14px;
+      color: var(--brown-mid);
+    }
+
+    .profit-footer strong {
+      color: var(--terracotta);
+      font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .profit-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+ ═══════════════════════════════════════
        URGENCY BAR
   ═══════════════════════════════════════ -->
   <div class="urgency-bar">
@@ -1683,7 +1750,48 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
+  <!--
+  <section class="section">
+    <div class="container fade-in">
+      <span class="section-label">Proyección de negocio</span>
+      <h2>Análisis de <em>rentabilidad</em> estimada</h2>
+      
+      <div class="profit-card">
+        <p style="font-size: 15px; color: var(--brown-mid); text-align: center;">
+          Fabricar una vela artesanal es uno de los emprendimientos con mayor margen de ganancia hoy en día.
+        </p>
+
+        <div class="profit-grid">
+          <div class="profit-item">
+            <div class="profit-item-label">Costo Materiales</div>
+            <div class="profit-item-value">$2.00</div>
+          </div>
+          <div class="profit-item">
+            <div class="profit-item-label">Precio de Venta</div>
+            <div class="profit-item-value">$8.00</div>
+          </div>
+          <div class="profit-item">
+            <div class="profit-item-label">Ganancia Neta</div>
+            <div class="profit-item-value profit-highlight">$6.00</div>
+          </div>
+        </div>
+
+        <div class="profit-divider"></div>
+
+        <div class="profit-footer">
+          <p>
+            Con solo <strong>1 venta al día</strong> (30 al mes),<br>
+            podrías generar un flujo extra de <strong>$180.00 USD mensuales.</strong>
+          </p>
+        </div>
+        
+        <p style="font-size: 11px; color: #999; text-align: center; margin-top: 16px; font-style: italic;">
+          *Cálculos basados en precios promedio de mercado. Los resultados pueden variar según el país y la calidad de los materiales.
+        </p>
+      </div>
+    </div>
+  </section>
+ ═══════════════════════════════════════
        BONOS
   ═══════════════════════════════════════ -->
   <section class="section">
