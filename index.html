@@ -75,6 +75,21 @@
     }
     .lightbox.active img { transform: scale(1); }
     .wa-grid img { cursor: zoom-in; }
+        #lightbox-caption {
+      color: var(--white);
+      margin-top: 12px;
+      font-size: 14px;
+      font-family: var(--font-body);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    .caption-divider {
+      width: 30px;
+      height: 1px;
+      background: var(--gold-light);
+      margin: 8px auto;
+      opacity: 0.8;
+    }
     
     /* ═══════════════════════════════════════
        PROFITABILITY SECTION
@@ -2032,12 +2047,12 @@
           <!-- Subí los archivos del Drive a /img en tu repo GitHub
                Renombralos sin espacios: testimonio-1.jpg ... testimonio-6.jpg
                Si la imagen no existe se oculta automáticamente con onerror -->
-         <img src="img-testimonio-1.jpg" onclick="openLightbox(this.src)" alt="Alumna 1 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-<img src="img-testimonio-2.jpg" onclick="openLightbox(this.src)" alt="Alumna 2 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-<img src="img-testimonio-3.jpg" onclick="openLightbox(this.src)" alt="Alumna 3 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-<img src="img-testimonio-4.jpg" onclick="openLightbox(this.src)" alt="Alumna 4 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-<img src="img-testimonio-5.jpg" onclick="openLightbox(this.src)" alt="Alumna 5 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
-<img src="img-testimonio-6.jpg" onclick="openLightbox(this.src)" alt="Alumna 6 mostrando su vela" loading="lazy" onerror="this.style.display='none'" />
+         <img src="img-testimonio-1.jpg" onclick="openLightbox(this.src, 'Lau compartiendo su primera Bubble Candle terminada con éxito total.')" alt="Alumna 1" loading="lazy" onerror="this.style.display='none'" />
+<img src="img-testimonio-2.jpg" onclick="openLightbox(this.src, 'Alumnas compartiendo sus creaciones navideñas y consultando técnicas de pintura decorativa en la comunidad.')" alt="Alumna 2" loading="lazy" onerror="this.style.display='none'" />
+<img src="img-testimonio-3.jpg" onclick="openLightbox(this.src, 'Merche compartiendo sus nuevas velas burbuja y su felicidad por el progreso en el curso.')" alt="Alumna 3" loading="lazy" onerror="this.style.display='none'" />          
+<img src="img-testimonio-4.jpg" onclick="openLightbox(this.src, 'Jeshie emocionada compartiendo su primera creación terminada con el apoyo de sus compañeros.')" alt="Alumna 4" loading="lazy" onerror="this.style.display='none'" />        
+<img src="img-testimonio-5.jpg" onclick="openLightbox(this.src, 'Angie Silva compartiendo su primer gran logro: frascos artesanales decorados y listos para su primera entrega.')" alt="Alumna 5" loading="lazy" onerror="this.style.display='none'" />          
+<img src="img-testimonio-6.jpg" onclick="openLightbox(this.src, 'Julia compartiendo sus velitas de cactus y macetas de yeso bajo la luz de un precioso atardecer.')" alt="Alumna 6" loading="lazy" onerror="this.style.display='none'" />     
         </div>
       </div>
 
@@ -2228,16 +2243,15 @@
         body.style.maxHeight = body.scrollHeight + 'px';
       }
     }
-   function openLightbox(src) {
-  const lb = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  img.src = src;
-  lb.classList.add('active');
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === "Escape") document.getElementById('lightbox').classList.remove('active');
-});
+       function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      cap.textContent = caption;
+      lb.classList.add('active');
+       }
+    
     
     // ── Init ─────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', () => {
@@ -2246,9 +2260,14 @@ document.addEventListener('keydown', (e) => {
       initFloatingCTA();
     });
   </script>
-  <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
-    <img id="lightbox-img" src="" alt="Testimonio expandido">
-  </div>
+    <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+    <div style="text-align: center; max-width: 90%;">
+      <img id="lightbox-img" src="" alt="Testimonio expandido">
+      <div class="caption-divider"></div>
+      <div id="lightbox-caption"></div>
+    </div>
+    </div>
+  
   
 </body>
 </html>
