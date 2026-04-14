@@ -50,7 +50,72 @@
       --radius-lg: 24px;
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
     }
+  /* ═══════════════════════════════════════
+       PROFITABILITY SECTION
+    ═══════════════════════════════════════ */
+    .profit-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 4px 32px var(--shadow);
+      margin-top: 32px;
+      border: 1px solid var(--cream-dark);
+    }
 
+    .profit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+      margin: 24px 0;
+    }
+
+    .profit-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brown-mid);
+      margin-bottom: 8px;
+    }
+
+    .profit-item-value {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    .profit-highlight {
+      color: var(--terracotta) !important;
+    }
+
+    .profit-divider {
+      height: 1px;
+      background: var(--cream-dark);
+      margin: 20px 0;
+    }
+
+    .profit-footer {
+      background: var(--cream);
+      padding: 16px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .profit-footer p {
+      font-size: 14px;
+      color: var(--brown-mid);
+    }
+
+    .profit-footer strong {
+      color: var(--terracotta);
+      font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .profit-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
     /* ═══════════════════════════════════════
        RESET & BASE
     ═══════════════════════════════════════ */
@@ -1132,73 +1197,8 @@
 </head>
 <body>
 
-  <!--
-    /* ═══════════════════════════════════════
-       PROFITABILITY SECTION
-    ═══════════════════════════════════════ */
-    .profit-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: 0 4px 32px var(--shadow);
-      margin-top: 32px;
-      border: 1px solid var(--cream-dark);
-    }
-
-    .profit-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      text-align: center;
-      margin: 24px 0;
-    }
-
-    .profit-item-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--brown-mid);
-      margin-bottom: 8px;
-    }
-
-    .profit-item-value {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--brown);
-    }
-
-    .profit-highlight {
-      color: var(--terracotta) !important;
-    }
-
-    .profit-divider {
-      height: 1px;
-      background: var(--cream-dark);
-      margin: 20px 0;
-    }
-
-    .profit-footer {
-      background: var(--cream);
-      padding: 16px;
-      border-radius: var(--radius);
-      text-align: center;
-    }
-
-    .profit-footer p {
-      font-size: 14px;
-      color: var(--brown-mid);
-    }
-
-    .profit-footer strong {
-      color: var(--terracotta);
-      font-size: 16px;
-    }
-
-    @media (max-width: 480px) {
-      .profit-grid { grid-template-columns: 1fr; gap: 16px; }
-    }
+  
+    
  ═══════════════════════════════════════
        URGENCY BAR
   ═══════════════════════════════════════ -->
