@@ -1305,12 +1305,13 @@
   <script>
     // ── Countdown Timer ──────────────────────────────
     function startCountdown() {
-      const key = 'velas_timer_end';
-      let end = localStorage.getItem(key);
-      if (!end || Date.now() > Number(end)) {
-        end = Date.now() + (23 * 3600 + 47 * 60 + 13) * 1000;
-        localStorage.setItem(key, end);
-      }
+  const key = 'velas_timer_end';
+  let end = localStorage.getItem(key);
+  if (!end || Date.now() > Number(end)) {
+    // Siempre 24 horas desde ahora, se resetea solo
+    end = Date.now() + (24 * 3600 * 1000);
+    localStorage.setItem(key, end);
+  }
 
       function update() {
         const diff = Math.max(0, Number(end) - Date.now());
